@@ -1,4 +1,4 @@
-from nvidia/cuda:11.5.2-devel-ubuntu20.04
+FROM nvidia/cuda:11.5.2-devel-ubuntu20.04
 
 ENV TZ="Europe/Amsterdam"
 ENV DEBIAN_FRONTEND=noninteractive
@@ -10,6 +10,7 @@ RUN apt install -y cmake git \
   libsuitesparse-dev zlib1g-dev libjpeg-dev
 
 RUN apt install -y python3 python3-pip
+#RUN apt install -y x11vnc xvfb
 
 ARG USERNAME=user
 ARG USER_UID=1000
@@ -33,6 +34,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 WORKDIR /home/$USERNAME
 RUN pip3 install cmake
+
+#RUN echo "exec /bin/bash" > ~/.xinitrc && chmod +x ~/.xinitrc
+#CMD ["v11vnc", "-create", "-forever"]
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
