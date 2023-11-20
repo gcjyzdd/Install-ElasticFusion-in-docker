@@ -1,5 +1,15 @@
 # Build ElasticFusion in Docker
 
+This repo shows how to build and run [ElasticFusion](https://github.com/mp3guy/ElasticFusion.git) in a docker container.
+All the following instructions are based on Ubuntu OS but they could be easily ported to other Linux distributions.
+
+This repo could also be used as an example to configure a docker container that is suitable for CUDA and OpenGL development.
+For example, when troubleshooting the container, I used VS Code to remotely debug ElasticFusion.
+The advantage is that we don't need to install cuda toolkit in the host OS so it won't pollute the host OS.
+And we could pull images of various versions of cuda.
+
+## Install and configure docker
+
 Install `docker`:
 
 ``` sh
@@ -37,6 +47,14 @@ cd ElasticFusion/
 git submodule update --init
 ```
 
+## Build Elastic Fusion
+
+Build the image of the docker file:
+
+``` sh
+docker buildx build -t nvidia11 .
+```
+
 Manually start the container with the repo mapped:
 
 ``` sh
@@ -47,10 +65,10 @@ docker container run -it --rm --gpus all \
   -e DISPLAY=${DISPLAY} nvidia11 bash
 ```
 
-Build the repo:
+Build the repo in the container:
 
 ``` sh
-cd third-party/OpenNI2/
+cd ElasticFusion/third-party/OpenNI2/
 make -j8
 cd ../Pangolin/
 mkdir build

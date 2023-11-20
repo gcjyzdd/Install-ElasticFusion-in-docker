@@ -48,4 +48,5 @@ WORKDIR /home/$USERNAME
 #CMD ["v11vnc", "-create", "-forever"]
 
 COPY entrypoint.sh /entrypoint.sh
+COPY compose-entrypoint.sh /compose-entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

@@ -10,6 +10,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ./ElasticFusion:/home/user/ElasticFusion
     network_mode: host
+    entrypoint: /compose-entrypoint.sh
     deploy:
       resources:
         reservations:
