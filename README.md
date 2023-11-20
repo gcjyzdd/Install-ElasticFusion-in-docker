@@ -3,6 +3,8 @@
 This repo shows how to build and run [ElasticFusion](https://github.com/mp3guy/ElasticFusion.git) in a docker container.
 All the following instructions are based on Ubuntu OS but they could be easily ported to other Linux distributions.
 
+![demo](img/Screenshot%20from%202023-11-20%2022-21-46.png)
+
 This repo could also be used as an example to configure a docker container that is suitable for CUDA and OpenGL development.
 For example, when troubleshooting the container, I used VS Code to remotely debug ElasticFusion.
 The advantage is that we don't need to install cuda toolkit in the host OS so it won't pollute the host OS.
